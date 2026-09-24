@@ -29,4 +29,7 @@ cursor = conn.cursor()
 
 stadte_getrennt = aus_website.split('\n')
 for stadt in stadte_getrennt:
-    ...
+    stadt = stadt.split()
+    sql = f'''INSERT INTO stadte(ru_name, en_name, land_id) VALUES ('{stadt[0]}', '{stadt[1]}', 1);'''
+
+    cursor.execute(sql)
