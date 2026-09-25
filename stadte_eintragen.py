@@ -1,3 +1,5 @@
+import time
+
 import psycopg2
 from psycopg2.extras import execute_values
 
@@ -6,11 +8,9 @@ translator = Translator(from_lang='russian', to_lang='english')
 
 
 aus_website = '''
-Вена (нем. Wien)	1766746	2014	Вена
-Грац (нем. Graz)	269997	2014	Штирия
-Зальцбург (нем. Salzburg)	146631	2014	Зальцбург
-Инсбрук (нем. Innsbruck)	124579	2014	Тироль
-Линц (нем. Linz)	193814	2014	Верхняя Австрия
+Таллин	411063	2014	Харьюмаа
+Тарту
+Нарва
 '''
 
 
@@ -27,9 +27,11 @@ daten_zu_eintragen = []
 
 for stadt in stadte_getrennt:
     try:
+        time.sleep(0.5)
         stadt = stadt.split()
         en_name = translator.translate(stadt[0])
-        daten_zu_eintragen.append((stadt[0], en_name, 1))
+        print(stadt[0], en_name)
+        daten_zu_eintragen.append((stadt[0], en_name, 46))
     except IndexError:
         print('index Fehlung, stadt - ', stadt)
 
