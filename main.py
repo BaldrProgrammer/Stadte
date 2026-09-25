@@ -19,6 +19,13 @@ while True:
 
     stadte_waren.append(benutzers_stadt)
     nachste_buchstabe = benutzers_stadt[-1].upper()
+    match nachste_buchstabe:
+        case 'Ь':
+            nachste_buchstabe = benutzers_stadt[-2].upper()
+        case 'Ы':
+            nachste_buchstabe = 'И'
+        case 'Е':
+            nachste_buchstabe = 'Э'
 
     sql = f'''select * from stadte where {lang}_erste_buchstabe = '{benutzers_stadt[-1].upper()}';'''
     cursor.execute(sql)
