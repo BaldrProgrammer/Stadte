@@ -13,7 +13,13 @@ stadte_waren = []
 
 while True:
     benutzers_stadt = input('- ')
+    if benutzers_stadt in stadte_waren:
+        print('!! Diese Stadt war schon')
+        continue
+
     stadte_waren.append(benutzers_stadt)
+    nachste_buchstabe = benutzers_stadt[-1].upper()
+
     sql = f'''select * from stadte where {lang}_erste_buchstabe = '{benutzers_stadt[-1].upper()}';'''
     cursor.execute(sql)
     passende_antworten = cursor.fetchall()
