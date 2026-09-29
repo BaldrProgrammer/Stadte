@@ -40,12 +40,17 @@ while True:
         if antwort[1] in stadte_waren:
             continue
         break
+    match lang:
+        case 'ru':
+            antwort = antwort[1]
+        case 'en':
+            antwort = antwort[2]
 
-    print('~', antwort[1], '\n')
-    stadte_waren.append(antwort[1].lower())
-    benutzerbuchstabe = antwort[1][-1].lower()
+    print('~', antwort, '\n')
+    stadte_waren.append(antwort.lower())
+    benutzerbuchstabe = antwort[-1].lower()
     match benutzerbuchstabe:
         case 'ь':
-            benutzerbuchstabe = antwort[1][-2].lower()
+            benutzerbuchstabe = antwort[-2].lower()
         case 'ы':
             benutzerbuchstabe = 'и'
